@@ -42,13 +42,13 @@ public class AddrBookController {
 	public String getDB(@RequestParam("abId") int abId, HttpServletRequest req) throws Exception {
 		AddrBookVO vo = dao.getDB(abId);
 		req.setAttribute("ab", vo);
-		return "addrbook_form";
+		return "addrbook_edit_form";
 	}
 	
 	@RequestMapping("update.do")
 	public String updateDB(AddrBookVO vo) throws Exception {
 		System.out.print("vo = "+ vo);
-		// dao.update(vo);
+		dao.updateDB(vo);
 		return "redirect:addrbook_list.do";
 	}
 	
