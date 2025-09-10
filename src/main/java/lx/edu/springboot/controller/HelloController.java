@@ -20,4 +20,8 @@ public class HelloController {
 		model.addAttribute("vo", vo);
 		return "hello";
 	}
+	
+	public void lyn() {
+		System.out.println("잘 놀고 갑니다~");
+	}
 }
