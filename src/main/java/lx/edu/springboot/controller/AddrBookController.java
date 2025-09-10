@@ -39,21 +39,18 @@ public class AddrBookController {
 	}
 	
 	@RequestMapping("edit.do")
-	public ModelAndView getDB(@RequestParam("abId") int abId) throws Exception {
-		ModelAndView result = new ModelAndView();
-		System.out.print("삭제되는 ID : " + abId);
+	public String getDB(@RequestParam("abId") int abId, HttpServletRequest req) throws Exception {
 		AddrBookVO vo = dao.getDB(abId);
-		result.addObject("ab", vo);
-		result.setViewName("addrbook_edit_form");
-		return result;
+		req.setAttribute("ab", vo);
+		return "addrbook_form";
 	}
 	
-//	@RequestMapping("update.do")
-//	public String updateDB(AddrBookVO vo) throws Exception {
-//		System.out.print(vo);
-//		dao.insertDB(vo);
-//		return "redirect:addrbook_list.do";
-//	}
+	@RequestMapping("update.do")
+	public String updateDB(AddrBookVO vo) throws Exception {
+		System.out.print("vo = "+ vo);
+		// dao.update(vo);
+		return "redirect:addrbook_list.do";
+	}
 	
 //	@RequestMapping("delete.do")
 //	public String deleteDB(AddrBookVO vo) throws Exception {
